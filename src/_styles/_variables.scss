@@ -1,0 +1,53 @@
+/* Breakpoints */
+$bpMobile: 320px;
+$bpTablet: 768px;
+$bpDesktop: 1024px;
+$bpLgDesktop: 1280px;
+$bpXLgDesktop: 1366px;
+
+/* Font Weight */
+$primaryFont: 'SourceSans', sans-serif;
+$codeFont: 'SourceCode', sans-serif;
+$base-fontsize: 16px;
+$base-lineheight: 1.2;
+$thin: 100;
+$light: 200;
+$book: 300;
+$normal: 400;
+$medium: 500;
+$bold: 600;
+$semibold: 700;
+$heavy: 800;
+$black: 900;
+
+/* Colors */
+$white: #fff;
+$black: #000;
+$darkBlue: #006BCB;
+$darkBlueOp: #006BCB40;
+$lightBlue: #0092EF;
+$lightBlueOp: #0092EF40;
+$cyan: #00D5CF;
+$cyanOp: #00d5cf40;
+$lime: #A0EA11;
+$green: #05B74D;
+$yellow: #FED800;
+$orange: #F5B827;
+$darkOrange: #E87654;
+$purple: #8F3191;
+$magenta: #CC04B5;
+$red: #EB2767;
+$darkRed: #D12325;
+
+/* Expo */
+$easeInOutExpo: cubic-bezier(0.75, 0, 0, 0.75);
+$easeInOutBack: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+/* Shadow */
+$cardShadow: 0 4px 4px rgba(0, 0, 0, 0.15);
+$cardShadow2: 0px 0px 10px 0px rgba(0,0,0,0.3);
+$cardShadow3: 0px 0px 5px 0px rgba(0,0,0,0.2);
+$cardShadowHover: 0 6px 6px rgba(0, 0, 0, 0.3);
+$buttonShadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+$buttonShadowHover: 0 6px 6px rgba(0, 0, 0, 0.3);
+$textShadow: 0px 3px 5px rgba(0, 0, 0, 0.5);

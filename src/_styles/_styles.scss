@@ -1,0 +1,162 @@
+/* =====================
+Layout
+===================== */
+%vh {
+    @include visuallyhidden();
+}
+
+%clearfix { @include clearfix(); }
+
+%container {
+    @extend %clearfix;
+    margin: auto;
+    position: relative;
+    width: 100%;
+    padding: 0 15px;
+}
+
+%container-lg {
+  @extend %container;
+}
+
+%list-unstyled {
+  @include normalise-list;
+}
+
+.clearfix {
+  @extend %clearfix;
+}
+
+.container {
+  @extend %container;
+  max-width: $bpDesktop;
+}
+
+.container-lg {
+  @extend %container-lg;
+  max-width: $bpXLgDesktop;
+}
+
+.vh, .sr-only {
+    @extend %vh;
+}
+
+.img-responsive {
+    display: block;
+    height: auto;
+    margin: auto;
+    max-width: 100%;
+    width: 100%;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.hide {
+  display: none;
+}
+
+.row {
+  @extend %clearfix;
+  margin: 0 -15px;
+}
+
+.reverse-col {
+  [class^="col-"], [class*=" col-"] {
+    float: right;
+  }
+}
+
+[class^="col-"], [class*=" col-"] {
+  float: left;
+  width: 100%;
+  padding: 0 15px;
+}
+
+[class^="col-offset-"], [class*=" col-offset-"] {
+  margin: auto;
+}
+
+.tablet-only {
+  display: none;
+}
+
+.desktop-only {
+  display: none;
+}
+
+@for $i from 1 through 12 {
+  .col-xs-#{$i} {
+    width: (100% / 12 * $i);
+  }
+
+  .col-offset-xs-#{$i} {
+    margin-left: (100% / 12 * $i);
+  }
+}
+
+@media only screen and (max-width: $bpTablet - 1) {
+  .no-mobile {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: $bpTablet) {
+  @for $i from 1 through 12 {
+    .col-sm-#{$i} {
+      width: (100% / 12 * $i);
+    }
+
+    .col-offset-sm-#{$i} {
+      margin-left: (100% / 12 * $i);
+    }
+  }
+
+  .mobile-only {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: $bpTablet) and (max-width: $bpDesktop - 1) {
+  .tablet-only {
+    display: block;
+  }
+
+  .no-tablet {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: $bpDesktop) {
+  @for $i from 1 through 12 {
+    .col-md-#{$i} {
+      width: (100% / 12 * $i);
+    }
+
+    .col-offset-md-#{$i} {
+      margin-left: (100% / 12 * $i);
+    }
+  }
+
+  .desktop-only {
+    display: block;
+  }
+
+  .no-desktop {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: $bpLgDesktop) {
+  @for $i from 1 through 12 {
+    .col-lg-#{$i} {
+      width: (100% / 12 * $i);
+    }
+
+    .col-offset-lg-#{$i} {
+      margin-left: (100% / 12 * $i);
+    }
+  }
+}

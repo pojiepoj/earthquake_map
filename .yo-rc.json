@@ -1,0 +1,7 @@
+{
+  "generator-yolo": {
+    "project": "EarthquakeMap",
+    "author": "JP Po",
+    "jsPreprocessor": "ES6(using babel)"
+  }
+}
