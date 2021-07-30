@@ -58,17 +58,18 @@ a:active {
 }
 
 .table-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  overflow-x:auto;
+  display: block;
+  overflow-x: auto;
+  width: 80%;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 table {
   border-collapse: collapse;
   border-spacing: 0;
-  width: 80%;
+  width: 900px;
+  /* max-width: 900px; */
   border: 1px solid #ddd;
 }
 

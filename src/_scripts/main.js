@@ -20,19 +20,20 @@ $( document ).ready(function() {
         contentType: "application/json",
         dataType: 'json',
         success: function(result){          
-          
+          // pins color set
           let colorSet = new am4core.ColorSet();
 
           $.each(result.features, function(index, value) {
             let tData = {}
             let mData = {}
+            //data to be use for table
             tData.title = value.properties.title;
             tData.mag = value.properties.mag;        
             tData.url = value.properties.url;        
-            tData.Loc = value.properties.place;                
-            tData.longitude = value.geometry.coordinates[0];            
-            tData.latitude = value.geometry.coordinates[1];  
+            tData.loc = value.properties.place;                
             tableData.push(tData);
+
+            // data to be use for map pins
             mData.url = value.properties.url;        
             mData.title = value.properties.title;
             mData.longitude = value.geometry.coordinates[0];            
@@ -41,6 +42,28 @@ $( document ).ready(function() {
             mapData.push(mData);
             
           });
+
+          //sort of table data base on magnitude
+          function sortByKeyDesc(array, key) {
+            return array.sort(function (a, b) {
+                var x = a[key]; var y = b[key];
+                return ((x > y) ? -1 : ((x < y) ? 1 : 0));
+            });
+          }
+
+          let posts = [];
+          posts = sortByKeyDesc(tableData, "mag");
+
+          //append content to table
+          let tableWrap = $(".table-wrap");
+          let tableBody = $("tbody", tableWrap);
+          
+          $.each(posts, function(index, value){
+            let tableRow = `<tr><td>${value.title}</td><td>${value.mag}</td><td><a href='${value.url}'>${value.url}</a></td><td>${value.loc}</td></tr>`;
+
+            tableBody.append(tableRow);
+          });
+
 
           /* Chart code */
           // Themes begin
@@ -110,9 +133,7 @@ $( document ).ready(function() {
             }else{
               return 1;
             }  
-          });          
-          
-          console.log(tableData);
+          });                    
           
           imageSeries.data = mapData;
 
