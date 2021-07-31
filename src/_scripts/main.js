@@ -38,12 +38,10 @@ $( document ).ready(function() {
                                 
             // data to be use for map pins
             //convert unix date to readable date
-            let myDate = new Date(value.properties.time);
-            // remove the Magnitute data from title
-            let pinTitle = String(value.properties.title).split(' - ');            
+            let myDate = new Date(value.properties.time);                 
 
             mData.url = value.properties.url;                    
-            mData.title = pinTitle[1] + ' ' + moment(myDate.toLocaleString()).format("yyyy-DD-MM hh:mm a");
+            mData.title = String(value.properties.place) + ' ' + moment(myDate.toLocaleString()).format("yyyy-DD-MM hh:mm a");
             mData.longitude = value.geometry.coordinates[0];            
             mData.latitude = value.geometry.coordinates[1];  
             mData.color = colorSet.next();
