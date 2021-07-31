@@ -8,9 +8,8 @@ import * as am4core from "@amcharts/amcharts4/core";
 import * as am4maps from "@amcharts/amcharts4/maps";
 import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+import moment from 'moment';
 
-var tableData = []
-var mapData = []
 /* API Call*/
 
 $( document ).ready(function() {
@@ -19,7 +18,11 @@ $( document ).ready(function() {
         url: endpoint,
         contentType: "application/json",
         dataType: 'json',
-        success: function(result){          
+        success: function(result){       
+          
+          let tableData = []
+          let mapData = []
+
           // pins color set
           let colorSet = new am4core.ColorSet();
 
@@ -32,10 +35,15 @@ $( document ).ready(function() {
             tData.url = value.properties.url;        
             tData.loc = value.properties.place;                
             tableData.push(tData);
-
+                                
             // data to be use for map pins
-            mData.url = value.properties.url;        
-            mData.title = value.properties.title;
+            //convert unix date to readable date
+            let myDate = new Date(value.properties.time);
+            // remove the Magnitute data from title
+            let pinTitle = String(value.properties.title).split(' - ');            
+
+            mData.url = value.properties.url;                    
+            mData.title = pinTitle[1] + ' ' + moment(myDate.toLocaleString()).format("yyyy-DD-MM hh:mm a");
             mData.longitude = value.geometry.coordinates[0];            
             mData.latitude = value.geometry.coordinates[1];  
             mData.color = colorSet.next();
@@ -43,7 +51,7 @@ $( document ).ready(function() {
             
           });
 
-          //sort of table data base on magnitude
+          //sort function for array of objects
           function sortByKeyDesc(array, key) {
             return array.sort(function (a, b) {
                 var x = a[key]; var y = b[key];
